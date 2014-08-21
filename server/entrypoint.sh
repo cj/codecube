@@ -10,7 +10,7 @@ if [ -z $uid ]; then
   uid=10000
 fi
 
-echo "127.0.0.1 $(hostname)" >> /etc/hosts
+echo "127.0.0.1 $(hostname)" >> /tmp/hosts
 
 groupadd code
 useradd -u "$uid" -G code -d "/home/codecube" -m codecube 
@@ -18,4 +18,3 @@ chgrp code /code
 chmod 0775 /code
 cd /home/codecube
 sudo -u codecube /bin/bash /run-code.sh $prog
-
