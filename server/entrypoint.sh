@@ -14,7 +14,6 @@ echo "127.0.0.1 $(hostname)" >> /tmp/hosts
 
 groupadd code
 useradd -u "$uid" -G code -d "/home/codecube" -m codecube
-mkdir /code
 chgrp code /code
 chmod 0775 /code
 cd /home/codecube
