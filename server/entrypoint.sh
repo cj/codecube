@@ -1,20 +1,10 @@
-prog=$1
-uid=$2
+file=$1
+code=$2
 
-if [ -z $1 ]; then
-  echo "you must provide a file"
-  exit 1
-fi
-
-if [ -z $uid ]; then
-  uid=10000
-fi
+cat <<EOF > $file
+  $code
+EOF
 
 echo "127.0.0.1 $(hostname)" >> /tmp/hosts
 
-groupadd code
-useradd -u "$uid" -G code -d "/home/codecube" -m codecube
-chgrp code /code
-chmod 0775 /code
-cd /home/codecube
-sudo -u codecube /bin/bash /run-code.sh $prog
+sudo /bin/bash /run-code.sh $file

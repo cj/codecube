@@ -27,6 +27,13 @@ case "$extension" in
   "rb")
     ruby $prog
     ;;
+  "cs")
+    mcs $prog
+    mono "${prog%.*}.exe"
+    ;;
+  "py")
+    python $prog
+    ;;
   *)
     echo "invalid language"
     exit 1
